@@ -18,9 +18,23 @@
 #       - run: echo "🍏 This job's status is ${{ job.status }}."
 
 
-name: My Workflow
-on: workflow_dispatch
+# name: My Workflow
+# on: workflow_dispatch
+# jobs:
+#   runs-on: ubuntu-latest
+#   steps:
+#     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+
+name: Test run v1
+
+on:
+  workflow_dispatch:
+
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Show environment v1
+        run: env | grep ^GITHUB
+      - name: Show ref v1
+        run: echo "===============> Version from $GITHUB_REF"
